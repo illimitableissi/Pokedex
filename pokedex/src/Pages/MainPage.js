@@ -12,7 +12,7 @@ class MainPage extends React.Component {
     }
 
 componentDidMount () {
-    fetch("https://pokeapi.co/api/v2/pokemon/?limit=30/")
+    fetch("https://pokeapi.co/api/v2/pokemon/?limit=151/")
     .then(res => res.json())
     .then(response => this.setState({
         pokemon: response.results}, () => {
@@ -37,7 +37,7 @@ render() {
     return (
         <div>
             <Container>
-                <img src={logo} alt="logo" style={{ width: '30rem'}}/>
+                <img src={logo} alt="logo" style={{ width: '35rem'}} className="App-logo"/>
                 <Row>
                     {pokemonEntries.map(j =>
                     <PokemonDetails 
