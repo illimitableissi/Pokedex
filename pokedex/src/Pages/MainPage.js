@@ -1,8 +1,8 @@
 import React from 'react';
 import PokemonDetails from '../Components/PokemonDetails'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import logo from'../images/pokemon-Logo.png'
 
 class MainPage extends React.Component {
 
@@ -12,7 +12,7 @@ class MainPage extends React.Component {
     }
 
 componentDidMount () {
-    fetch("https://pokeapi.co/api/v2/pokemon/?limit=151/")
+    fetch("https://pokeapi.co/api/v2/pokemon/?limit=30/")
     .then(res => res.json())
     .then(response => this.setState({
         pokemon: response.results}, () => {
@@ -27,28 +27,27 @@ componentDidMount () {
             )            
         .catch(err => console.log(err));
         })
-    }
+      }
     ))
-    
     .catch(err => console.log(err));
 }
 
 render() {
-    const {pokemon, pokemonEntries, pokemonUrls} = this.state
+    const {pokemonEntries} = this.state
     return (
         <div>
-            <h1>Pokedex</h1>
             <Container>
+                <img src={logo} alt="logo" style={{ width: '30rem'}}/>
                 <Row>
-            {pokemonEntries.map( j =>
-            <PokemonDetails 
-                image = {j.sprites['front_default']}
-                name = {j.name.toUpperCase()}
-                id = {j.id}
-                information = {j.base_experience}
-            />
-                )}
-            </Row>
+                    {pokemonEntries.map(j =>
+                    <PokemonDetails 
+                        image = {j.sprites['front_default']}
+                        name = {j.name.toUpperCase()}
+                        id = {j.id}
+                        information = {j.base_experience}
+                    />
+                    )}
+                </Row>
             </Container>
         </div>
     )
