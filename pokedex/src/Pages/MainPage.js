@@ -1,6 +1,7 @@
 import React from 'react';
 import PokemonDetails from '../Components/PokemonDetails'
 import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import logo from'../images/pokemon-Logo.png'
 
@@ -37,7 +38,11 @@ render() {
     return (
         <div>
             <Container>
-                <img src={logo} alt="logo" style={{ width: '35rem'}} className="App-logo"/>
+                <Row>
+                    <Col>
+                        <img src={logo} alt="logo" style={{ width: '35rem'}} className="App-logo"/>
+                    </Col>
+                </Row>
                 <Row>
                     {pokemonEntries.map(j =>
                     <PokemonDetails 
